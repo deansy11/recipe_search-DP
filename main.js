@@ -1,6 +1,14 @@
-const baseUrl = "https://crossorigin.me/http://www.recipepuppy.com/api/"
+const baseUrl = "https://crossorigin.me/http://www.recipepuppy.com/api/";
 
-fetch(baseUrl)
+const container = document.querySelector(".container");
+let rec_input = document.querySelector(".recipe_input");
+
+document.querySelector("button").addEventListener("click", function() {
+  console.log(rec_input.value);
+
+let userReq = baseUrl + "?q=" + rec_input.value;
+
+fetch(userReq)
   .then(function(response) {
     if (response.status !== 200) {
       console.log(response.status);
@@ -8,21 +16,21 @@ fetch(baseUrl)
     }
     response.json().then(function(data){
       console.log(data);
-    });
-    let rec_input = document.querySelector(".recipe_input");
-    let userReq = baseUrl + "?q=" + rec_input;
-    console.log(userReq);
-    let template = `
-    <ul class="upper"></ul>
-    <li>
-    <img src="${data.thumbnail}" alt="image_not_shown">
-    <a href=${data.href}><h4>${data.title}</h></a>
-    </li>
-    <ul class="upper"></ul>
-    `
-    container.innerHTML = template;
-  })
 
+        let innerData = data.results[0];
+        let template = `
+        <ul class="upper"></ul>
+        <li>
+        <img src="${innerData.thumbnail}" alt="image_not_shown">
+        <a href=${innerData.href}><h4>${innerData.title}</h></a>
+        <p>${innerData.ingredients}</p>
+        </li>
+        <ul class="upper"></ul>
+        `
+        container.innerHTML = template;
+  });
+  })
+});
 
 //
 // <section class="container">
