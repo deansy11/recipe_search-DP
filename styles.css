@@ -1,4 +1,44 @@
+html, body {
+  max-width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form {
+  margin: 10px 0 20px 20px;
+  border-bottom: 1px solid #DDEAF0;
+  background-color: #DDEAF0;
+}
+
+.submission_box {
+  border: 1px solid #CECFCA;
+}
+
+input {
+  margin: 20px 15px 30px 30px;
+  border: 1px solid #808080;
+}
+
+ul {
+  margin: 15px 25px 0 25px;
+}
+
+
 li {
-  width: 100px;
-  height: 40px;
+  width: 240px;
+  /*height: 1000px;*/
+  list-style: none;
+}
+
+li > p {
+  text-align: center;
+}
+
+img {
+  height: 240px;
+  width: 300px;
+  border: 1px solid black;
 }
